@@ -1,0 +1,43 @@
+import java.util.*;
+class Order {
+    String customerName;
+    String cakeType;
+    int quantity;
+    double pricePerCake;
+    Order(String cName, String cType, int qn) {
+        customerName = cName;
+        cakeType = cType;
+        quantity = qn;
+        if (cakeType.equalsIgnoreCase("Chocolate"))
+            pricePerCake = 350;
+        else if (cakeType.equalsIgnoreCase("Vanilla"))
+            pricePerCake = 300;
+        else
+            pricePerCake = 250;
+    }
+    public double calculateTotalPrice() {
+        return quantity * pricePerCake;
+    }
+    public void displayOrderDetails() {
+        System.out.println("Order Details:");
+        System.out.println("Customer Name: " + customerName);
+        System.out.println("Cake Type: " + cakeType);
+        System.out.println("Quantity: " + quantity);
+        System.out.println("Price per Cake: " + pricePerCake);
+        System.out.println("Total Price: " + calculateTotalPrice());
+    }
+}
+public class CakeShop {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter customer name: ");
+        String customerName = scanner.nextLine();
+        System.out.print("Enter cake type (e.g., Chocolate, Vanilla, Other): ");
+        String cakeType = scanner.nextLine();
+        System.out.print("Enter quantity: ");
+        int quantity = scanner.nextInt();
+        Order order = new Order(customerName, cakeType, quantity);
+        order.displayOrderDetails();
+        scanner.close();
+    }
+}
