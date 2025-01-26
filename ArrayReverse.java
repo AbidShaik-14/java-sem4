@@ -1,34 +1,25 @@
 import java.util.*;
-
-public class ArrayReverse {
-
-    public static void reverse(String[] array) {
-        int i = 0, j = array.length - 1;
-        while (i < j) {
-            String temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
-            i++;
-            j--;
+public class ReverseArray {
+    public static void reverse(String[] arr) {
+        for (int l = 0, r = arr.length - 1; l < r; l++, r--) {
+            String temp = arr[l];
+            arr[l] = arr[r];
+            arr[r] = temp;
         }
     }
-
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter number of items:");
-        int size = input.nextInt();
-        input.nextLine();
-
-        String[] items = new String[size];
-        System.out.println("Enter items:");
-        for (int k = 0; k < size; k++) {
-            items[k] = input.nextLine();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the size of the array: ");
+        int size = sc.nextInt();
+        sc.nextLine(); 
+        String[] arr = new String[size];
+        System.out.println("Enter the array elements:");
+        for (int i = 0; i < size; i++) {
+            arr[i] = sc.nextLine();
         }
-
-        System.out.println("Original: " + Arrays.toString(items));
-        reverse(items);
-        System.out.println("Reversed: " + Arrays.toString(items));
-
-        input.close();
+        System.out.println("Original array: " + Arrays.toString(arr));
+        reverse(arr);
+        System.out.println("Reversed array: " + Arrays.toString(arr));
+        sc.close();
     }
 }
